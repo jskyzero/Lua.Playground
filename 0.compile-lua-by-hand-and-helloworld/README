@@ -1,0 +1,29 @@
+0.compile-lua-by-hand-and-helloworld
+jskyzero 2018/10/11
+
+
+1. compile lua by hand
+
+这里已经将某个版本的Lua的源代码给下载下来，以下展示编译的过程：
+  # OS info: WSL Ubuntu 18.04 
+  # for readline dependence
+  sudo apt-get install libreadline-dev
+  # for make clean dependence
+  sudo apt install rcsclean
+  # compile
+  make -j8 > /dev/null && ./lua -v
+
+参考:
+lua源代码：
+  https://github.com/lua/lua
+lua Build a Standalone Executable：
+  http://lua.space/tools/build-a-standalone-executable
+Install rcs：
+  https://www.howtoinstall.co/en/ubuntu/trusty/rcs
+
+2. helloworld
+就很简单，你可以将刚才的执行文件添加进系统路径，然后直接运行，大概会像下面这样。
+  sudo mv lua /usr/bin
+  lua hello.lua
+
+如果正常的话，你将会看到命令行输出经典的"Hello World!"
