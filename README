@@ -1,10 +1,14 @@
 Lua and Game Develop
+jskyzero 2018/10/11
 
 Overview
   offer a way to learn lua and use it in game develop.
 
+
 Sturcture
   0.compile-lua-by-hand-and-helloworld
 
+
 Reference
-  TODO
+  1. Lua Official Site: https://www.lua.org/
+  ...
