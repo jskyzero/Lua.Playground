@@ -4,6 +4,9 @@ jskyzero 2018/10/11
 
 1. compile lua by hand
 
+
+對於Github版本的lua代碼（適用于Linux系統）：
+
 这里已经将某个版本的Lua的源代码给下载下来，以下展示编译的过程：
   # OS info: WSL Ubuntu 18.04 
   # for readline dependence
@@ -12,6 +15,12 @@ jskyzero 2018/10/11
   sudo apt install rcsclean
   # compile
   make -j8 > /dev/null && ./lua -v
+
+對於官網下載的源代碼（適用於macOS系統）：
+
+請遵循官網指引繼續，可能編譯的操作如下：
+  # for mac os 
+  make macosx test
 
 参考:
 lua源代码：
@@ -23,6 +32,7 @@ Install rcs：
 
 2. helloworld
 就很简单，你可以将刚才的执行文件添加进系统路径，然后直接运行，大概会像下面这样。
+  # for linux
   sudo mv lua /usr/bin
   lua hello.lua
 
