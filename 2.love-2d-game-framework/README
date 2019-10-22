@@ -2,6 +2,11 @@
 jskyzero 2019/10/13
 
 
+0. why learn love2d ?
+
+唔，首先是學習框架本身，其次是關於如何設計一個框架，以及調用DLL等技巧性知識。
+
+
 1. download love2d from https://love2d.org/
 
 2. read the documents and have a try!
