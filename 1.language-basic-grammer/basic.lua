@@ -3,7 +3,7 @@
 --[[
   jskyzero
   
-  2018、10
+  2018/10
 ]]
 
 print("variable naming")
