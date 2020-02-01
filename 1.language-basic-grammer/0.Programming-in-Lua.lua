@@ -9,7 +9,7 @@
 print("variable naming")
 assert(nil == nil)
 -- unused variable is default nil
-assert(x == nil) 
+assert(x == nil)
 -- set a string value to variable x
 local x = "now it is not nil"
 assert(not (x == nil))

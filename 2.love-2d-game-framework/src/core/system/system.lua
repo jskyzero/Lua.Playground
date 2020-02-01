@@ -27,15 +27,25 @@ function system.main()
   function love.run()
     return system.run()
   end
-end  
+end
 
 
 system.run = require((...) .. "Run")
 
+
 function system.initial()
   local major, minor, revision, codename = love.getVersion()
-  local str = string.format("Version %d.%d.%d - %s", major, minor, revision, codename)
-  -- print(str)
+  local versionStr = string.format("Version %d.%d.%d - %s", major, minor, revision, codename)
+  print(versionStr)
+
+  require("core.gameObject.gameObject")
+  local a = GameObject()
+  local b = GameObject(1, 2, 3)
+  a.x = 1
+  a:addChild(b)
+  print(a.x, b.x)
+  print(a.children[0] == b)
+
 end
 
 function system.update(dt)
