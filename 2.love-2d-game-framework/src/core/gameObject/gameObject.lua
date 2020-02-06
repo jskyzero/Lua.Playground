@@ -42,18 +42,16 @@ function GameObject:removeChild(child)
   --     self.children[k] = nil
   --   end
   -- end
-
   self.children[child] = nil
 end
 
 function GameObject:addComponent(component)
+  assert(type(component) == "table")
   assert(type(component.initial) == "function")
   assert(type(component.update) == "function")
   assert(type(component.render) == "function")
 
   self.components[component] = component
-  print(#self.components)
-
   -- print("add success")
 end
 
@@ -63,7 +61,7 @@ end
 
 function GameObject:initial()
   for k,v in next,self.components,nil do
-    v:initial()
+    v:initial(self)
   end
   for k,v in next,self.children,nil do
     v:_initial()
@@ -73,7 +71,7 @@ end
 function GameObject:update(dt)
   -- print(1, dt)
   for k,v in next,self.components,nil do
-    v:update()
+    v:update(self)
   end
   for k,v in next,self.children,nil do
     v:update()
@@ -82,8 +80,10 @@ function GameObject:update(dt)
 end
 
 function GameObject:render()
+  -- slow unuseable version
+  -- for k, v in pairs(self.components) do
   for k,v in next,self.components,nil do
-    v:render()
+    v:render(self)
   end
   for k,v in next,self.children,nil do
     v:render()

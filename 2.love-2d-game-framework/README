@@ -14,6 +14,15 @@ jskyzero 2019/10/13
 運行：
   love 2.love-2d-game-framework
 
+3. framework
+3.0 system execute sequence
+3.1 scene structure
+3.2 player move
+3.3 scene element
+3.4 clickable ui
+3.5 mvc structure
+3.6 basic game
+
 
 
 参考：

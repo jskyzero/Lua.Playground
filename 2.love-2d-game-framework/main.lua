@@ -7,7 +7,7 @@ love.filesystem.setRequirePath("src/?.lua;src/?/?.lua;src/?/?/?.lua;")
 
 -- import module
 local system = require("core.system.system")
-local scene = require("biz.playground.playground_0")
+local scene = require("biz.playground.root")
 
 
 system.load(scene)
