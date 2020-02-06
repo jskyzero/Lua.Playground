@@ -1,9 +1,8 @@
 -- core.system
 -- use to link love callbacks with core logic
 
-system = {}
+local system = {}
 
-local x, y, w, h = 20, 20, 60, 20
 
 -- main entry for link
 function system.main()
@@ -32,30 +31,24 @@ end
 
 system.run = require((...) .. "Run")
 
+function system.load(root)
+  system.root = root
+end
 
 function system.initial()
   local major, minor, revision, codename = love.getVersion()
   local versionStr = string.format("Version %d.%d.%d - %s", major, minor, revision, codename)
   print(versionStr)
 
-  require("core.gameObject.gameObject")
-  local a = GameObject()
-  local b = GameObject(1, 2, 3)
-  a.x = 1
-  a:addChild(b)
-  print(a.x, b.x)
-  print(a.children[0] == b)
-
+  system.root:initial()
 end
 
 function system.update(dt)
-  w = w + 1
-  h = h + 1
+  system.root:update(dt)
 end
 
 function system.render()
-  love.graphics.setColor(0, 0.4, 0.4)
-  love.graphics.rectangle("fill", x, y, w, h)
+  system.root:render()
 end
 
 return system

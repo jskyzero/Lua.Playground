@@ -32,5 +32,60 @@ function GameObject:_init(name, x, y, z)
 end
 
 function GameObject:addChild(child)
-  self.children[#self.children] = child
+  -- self.children[#self.children] = child
+  self.children[child] = child
+end
+
+function GameObject:removeChild(child)
+  -- for k,v in pairs(self.children) do
+  --   if (v == child) then
+  --     self.children[k] = nil
+  --   end
+  -- end
+
+  self.children[child] = nil
+end
+
+function GameObject:addComponent(component)
+  assert(type(component.initial) == "function")
+  assert(type(component.update) == "function")
+  assert(type(component.render) == "function")
+
+  self.components[component] = component
+  print(#self.components)
+
+  -- print("add success")
+end
+
+function GameObject:removeComponent(component)
+  self.components[component] = nil
+end
+
+function GameObject:initial()
+  for k,v in next,self.components,nil do
+    v:initial()
+  end
+  for k,v in next,self.children,nil do
+    v:_initial()
+  end
+end
+
+function GameObject:update(dt)
+  -- print(1, dt)
+  for k,v in next,self.components,nil do
+    v:update()
+  end
+  for k,v in next,self.children,nil do
+    v:update()
+  end
+  -- print(2, dt)
+end
+
+function GameObject:render()
+  for k,v in next,self.components,nil do
+    v:render()
+  end
+  for k,v in next,self.children,nil do
+    v:render()
+  end
 end
