@@ -22,6 +22,13 @@ setmetatable(GameObject, {
 })
 
 function GameObject:_init()
+  self.name = "GameObject"
+  self.x = 0
+  self.y = 0
+  self.z = 0
+  self.isActive = true
+  self.children = {}
+  self.components = {}
 end
 
 function GameObject:_init(name, x, y, z)
@@ -29,6 +36,9 @@ function GameObject:_init(name, x, y, z)
   self.x = x
   self.y = y
   self.z = z
+  self.isActive = true
+  self.children = {}
+  self.components = {}
 end
 
 function GameObject:addChild(child)
@@ -64,7 +74,7 @@ function GameObject:initial()
     v:initial(self)
   end
   for k,v in next,self.children,nil do
-    v:_initial()
+    v:initial()
   end
 end
 

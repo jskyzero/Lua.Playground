@@ -9,7 +9,6 @@ love.filesystem.setRequirePath("src/?.lua;src/?/?.lua;src/?/?/?.lua;")
 local system = require("core.system.system")
 local scene = require("biz.playground.root")
 
-
 system.load(scene)
 
 -- run main
