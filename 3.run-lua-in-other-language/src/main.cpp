@@ -1,7 +1,6 @@
 #include <iostream>
 #include <lua_helper.hpp>
 
-
 int main() {
   std::cout << "** Test Lua embedding" << std::endl;
   luahelper::LuaHelper lua = luahelper::LuaHelper();
@@ -13,23 +12,22 @@ int main() {
 
   double luavar = 1.0;
   lua.getNumber("luavar", luavar);
-  lua.clear();
   std::cout << "luavar = " << luavar << std::endl;
   lua.clear();
 
-  lua_getglobal(lua.getState(), "myluafunction");
-  lua_pushnumber(lua.getState(), 5);
+  lua_getglobal(lua, "myluafunction");
+  lua_pushnumber(lua, 5);
   lua.call(1, 1);
-  std::cout << "The return value of the function was "
-            << lua_tostring(lua.getState(), -1) << std::endl;
+  std::cout << "The return value of the function was " << lua_tostring(lua, -1)
+            << std::endl;
 
-  lua_pushcfunction(lua.getState(), luahelper::l_cppfunction);
-  lua_setglobal(lua.getState(), "cppfunction");
+  lua_pushcfunction(lua, luahelper::l_cppfunction);
+  lua_setglobal(lua, "cppfunction");
 
-  lua_getglobal(lua.getState(), "myfunction");
-  lua_pushnumber(lua.getState(), 5);
-  lua_pcall(lua.getState(), 1, 1, 0);
+  lua_getglobal(lua, "myfunction");
+  lua_pushnumber(lua, 5);
+  lua.call(1, 1);
   std::cout << "The return value of the function was " << lua_tonumber(lua, -1)
-       << std::endl;
-    lua.clear();
+            << std::endl;
+  lua.clear();
 }
