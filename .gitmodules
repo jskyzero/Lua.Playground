@@ -1,0 +1,3 @@
+[submodule "0.compile-lua-by-hand-and-helloworld/lua"]
+	path = 0.compile-lua-by-hand-and-helloworld/lua
+	url = https://github.com/lua/lua
